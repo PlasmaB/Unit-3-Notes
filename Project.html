@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel='stylesheet' href="style.css">
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <div>
+            <label number1>#</label>
+            <input id="numbers" type="text">
+            <label number2>#</label>
+            <input id="number2" type="text">
+            <button id="calculate">Calculate</button>
+            <p></p>
+        </div>
+    </div>
+</div>
+<script>
+    const calculateButton = document.getElementById('calculate');
+    const number1 = document.getElementById('number1');
+    const number2 = document.getElementById('number2');
+    const full = document.querySelector('p');
+    calculateButton.addEventListener('click', function (e) {
+        createCalculation();
+    });
+    function createCalculation(){
+        let number1# = number1.value;
+        let number2# = number1.value;
+        let fullName = `${number1#}+${number2#}!`;
+        const response = document.createElement('p');
+        response.innerHTML = `${number1#}+${number2#}${fullName}`;
+        full.insertAdjacentElement('afterbegin', response);
+    }
+
+
+</script>
+</div>
+</body>
+</html>
