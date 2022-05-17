@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Timers Practice</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .red{
+            background-color: firebrick;
+        }
+        .blue{
+            background-color: dodgerblue;
+        }
+        .orange{
+            background-color: orange;
+        }
+        .purple{
+            background-color: mediumpurple;
+        }
+        .yellow{
+            background-color: gold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <button id="selfRemove">Click Me!</button>
+        <div>
+            <button id="bgColor">Change Color</button>
+            <button id="stopChange">Stop change</button>
+        </div>
+    </div>
+    <script>
+        const removeButton = document.getElementById("selfRemove");
+        const colorChange = document.getElementById('bgColor');
+        let bgChange = ['red', 'blue', 'orange', 'purple', 'yellow'];
+        const stopBgChange = document.getElementById('stopChange');
+        let interval;
+
+        removeButton.addEventListener('click', function(){
+            setTimeout(function(){
+                removeButton.remove();
+            }, 300);
+        });
+
+        colorChange.addEventListener('click', function(){
+            if(!interval){
+                interval = setInterval(function(){
+                    let randomNum = Math.floor(Math.random()* bgChange.length);
+                    let changeColor = bgChange[randomNum];
+                    changeBgColor();
+                    colorChange.classList.add(changeColor)
+                }, 500);
+            }
+        });
+
+        stopBgChange.addEventListener('click', function(){
+            if(interval){
+                clearInterval(interval);
+                interval = null;
+            }
+        });
+
+        function changeBgColor(){
+            colorChange.classList.remove('red');
+            colorChange.classList.remove('blue');
+            colorChange.classList.remove('orange');
+            colorChange.classList.remove('purple');
+            colorChange.classList.remove('yellow');
+        }
+
+    </script>
+</div>
+</body>
+</html>
